@@ -73,7 +73,10 @@ def pwd(ssid, file):
 def menu():
     ssid = input("[*] Enter wifi SSID: ")
     filee = "words.txt"
-    os.remove(filee)
+    if os.path.exists(filee):
+        os.remove(filee)
+    else:
+        print("No current word list found.")
     print(BLUE, "Generating word list...")
     generate_word_list(ssid, filee)
 
