@@ -2,10 +2,10 @@ import openai
 
 def generate_word_list(network_name, output_file):
     # Set up your OpenAI API credentials
-    openai.api_key = 'API_KEY'
+    openai.api_key = 'ENTER API KEY HERE'
 
     # Specify the prompt
-    prompt = f'Create a word list for the network name "{network_name}".\n\nWord List:'
+    prompt = f'Create a word list where each word has its own line for the network name: "{network_name}".\n\nWord List:'
 
     # Generate the word list using OpenAI's Chat Completions API
     response = openai.Completion.create(
@@ -27,5 +27,6 @@ def generate_word_list(network_name, output_file):
     # Write the word list to a text file
     with open(output_file, 'w') as file:
         file.write('\n'.join(word_list))
+        file.flush()
 
     print(f"Word list generated and saved to {output_file}")
